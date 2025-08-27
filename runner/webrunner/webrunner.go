@@ -257,7 +257,10 @@ func (w *webrunner) setupMate(_ context.Context, writer io.Writer, job *web.Job)
 
 	if !job.Data.FastMode {
 		opts = append(opts,
-			scrapemateapp.WithJS(scrapemateapp.DisableImages()),
+			scrapemateapp.WithJS(
+				scrapemateapp.DisableImages(),
+				scrapemateapp.WithUA("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"),
+			),
 		)
 	} else {
 		opts = append(opts,
